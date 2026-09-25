@@ -11,6 +11,11 @@ setInterval(() => {
   updateClock();
 }, 1000);
 
+updateDate();
+setInterval(() => {
+  updateDate();
+}, 1000);
+
 function updateClock() {
   let time = new Date();
 
@@ -29,6 +34,9 @@ function updateClock() {
   min > 9 ? (minute.textContent = min) : (minute.textContent = "0" + min);
   sec > 9 ? (second.textContent = sec) : (second.textContent = "0" + sec);
   hr >= 12 ? (am_pm.textContent = "pm") : (am_pm.textContent = "am");
+}
+function updateDate() {
+  let time = new Date();
 
   year.textContent = time.getFullYear();
 
@@ -39,6 +47,6 @@ function updateClock() {
 
   day.textContent = time.getDate();
   time.getDate() + 1 > 9
-    ? (day.textContent = time.getDate() + 1)
-    : (day.textContent = "0" + (time.getDate() + 1));
+    ? (day.textContent = time.getDate())
+    : (day.textContent = "0" + time.getDate());
 }
